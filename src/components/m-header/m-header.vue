@@ -1,7 +1,11 @@
 <template>
   <div class="m-header">
-    <div class="icon"></div>
-    <h1 class="text">Ecode易小林</h1>
+    <div class="icon" v-if="!user"></div>
+    <h1 class="text" v-if="!user">Ecode易小林</h1>
+    <div v-if="user" class="avatar">
+      <img :src="user.avatar">
+    </div>
+    <h1 class="text" v-if="user">{{user.name}}</h1>
     <router-link tag="div" class="mine" to="/user">
       <i class="icon-mine"></i>
     </router-link>
@@ -9,7 +13,14 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default {}
+  import {mapGetters} from 'vuex'
+  export default {
+    computed: {
+      ...mapGetters([
+        'user'
+      ])
+    }
+  }
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
@@ -22,6 +33,17 @@
     text-align: center
     color: $color-theme
     font-size: 0
+    .avatar
+      display: inline-block
+      vertical-align: top
+      margin-top: 6px
+      width: 30px
+      height: 32px
+      margin-right: 9px
+      background-size: 30px 32px
+      img
+        border-radius: 50%
+        max-width: 100%
     .icon
       display: inline-block
       vertical-align: top

@@ -73,7 +73,11 @@
               <i @click="next" class="icon-next"></i>
             </div>
             <div class="icon i-right">
-              <i @click="toggleFavorite(currentSong)" class="icon" :class="favoriteIcon"></i>
+              <!--<i @click="toggleFavorite(currentSong)" class="icon" :class="favoriteIcon"></i>-->
+              <div @click="goUser">
+                <img src="./avatar.png" style="height: 30px; width: 30px; border-radius: 50%;" v-if="!user">
+                <img :src="user.avatar" style="height: 30px; width: 30px; border-radius: 50%;" v-if="user">
+              </div>
             </div>
           </div>
         </div>
@@ -157,13 +161,18 @@
       ...mapGetters([
         'currentIndex',
         'fullScreen',
-        'playing'
+        'playing',
+        'user'
       ])
     },
     created() {
       this.touch = {}
     },
     methods: {
+      goUser() {
+        this.$router.push('/user')
+        this.setFullScreen(false)
+      },
       back() {
         this.setFullScreen(false)
       },
@@ -546,7 +555,8 @@
 <style scoped lang="stylus" rel="stylesheet/stylus">
   @import "~common/stylus/variable"
   @import "~common/stylus/mixin"
-
+  
+  
   .player
     .normal-player
       position: fixed
@@ -702,7 +712,7 @@
           align-items: center
           .icon
             flex: 1
-            color: $color-theme
+            // color: $color-theme
             &.disable
               color: $color-theme-d
             i
@@ -784,7 +794,7 @@
           position: absolute
           left: 0
           top: 0
-
+      
   @keyframes rotate
     0%
       transform: rotate(0)

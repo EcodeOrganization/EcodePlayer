@@ -35,3 +35,5 @@ export const favoriteList = (state) => {
     return new Song(song)
   })
 }
+
+export const user = state => state.user

@@ -28,6 +28,7 @@
     },
     methods: {
       selectItem(item, index) {
+        console.log('selectItem')
         console.log(item)
         this.$emit('select', item, index)
       },

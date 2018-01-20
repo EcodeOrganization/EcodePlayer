@@ -1,6 +1,6 @@
 <template>
   <ul class="switches">
-    <li class="switch-item" v-for="(item,index) in switches" :class="{'active':currentIndex === index}"
+    <li class="switch-item" v-for="(item,index) in switches" :class="{'active':currentIndex === index || isLight}"
         @click="switchItem(index)">
       <span>{{item.name}} </span>
     </li>
@@ -19,9 +19,20 @@
         default: 0
       }
     },
+    computed: {
+      isLight() {
+        if (this.switches.length === 1) {
+          return true
+        } else {
+          return false
+        }
+      }
+    },
     methods: {
       switchItem(index) {
-        this.$emit('switch', index)
+        if (this.switches.length > 1) {
+          this.$emit('switch', index)
+        }
       }
     }
   }
