@@ -19,8 +19,8 @@ Vue.use(VueLazyload, {
   loading: require('common/image/default.png')
 })
 Vue.prototype.$http = axios
-Vue.prototype.resource = 'http://192.168.1.105:3000'
-// Vue.prototype.resource = 'http://192.168.10.239:3000'
+// Vue.prototype.resource = 'http://192.168.1.105:3000'
+Vue.prototype.resource = 'http://192.168.10.239:3000'
 // Vue.prototype.resource = 'http://localhost:3000'
 
 /* eslint-disable no-new */

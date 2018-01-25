@@ -1,6 +1,7 @@
 <template>
   <div class="m-header">
-    <div class="icon" v-if="!user"></div>
+    <!--<div class="icon" v-if="!user"></div>-->
+    <img v-if="!user" src="static/img/avatar.png" alt="" style="width: 30px; height: 32px; border-radius: 50%; margin-top: 6px; margin-right: 9px;">
     <h1 class="text" v-if="!user">Ecode易小林</h1>
     <div v-if="user" class="avatar">
       <img :src="user.avatar">
